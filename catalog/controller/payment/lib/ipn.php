@@ -220,7 +220,7 @@ class IPN extends Request{
                      * payment was paid; deliver goods
                      */
                     $outputData['errorType']	= self::ERROR_TYPE_NONE;
-                    $outputData['errorCode']	= null;
+                    $outputData['errorCode']	= "";
                     $outputData['errorMessage']	= "payment was paid; deliver goods. ".$ipnMsg;
                 break;
                 case self::STATUS_CANCELED: // void
@@ -282,7 +282,7 @@ class IPN extends Request{
                      * payment was confirmed; deliver goods
                      */
                     $outputData['errorType']	= self::ERROR_TYPE_NONE;
-                    $outputData['errorCode']	= null;
+                    $outputData['errorCode']	= "";
                     $outputData['errorMessage']	= "payment was confirmed; deliver goods. ".$ipnMsg;
                 break;
                 case self::STATUS_PENDING:
