@@ -142,6 +142,7 @@ class Mobilpay extends \Opencart\System\Engine\Controller {
 
     /**
      * statusPayment is to get current status of payment 
+     * Update status Order
 	 * http://localhost/open_v4.0.2/index.php?route=extension/mobilpay/payment/mobilpay.statusPayment
      */
     public function statusPayment($orderID, $ntpID) {
@@ -185,6 +186,11 @@ class Mobilpay extends \Opencart\System\Engine\Controller {
                 // change order status to selected option by Admin and add history
                 $comment = $this->language->get('text_payment_paid') . "\n";
                 $this->model_checkout_order->addHistory($this->getRealOrderID($orderID), $this->config->get('payment_mobilpay_order_status_id'), $comment);  
+                break;
+            case 12:
+                // change order status to Failed
+                $comment = $this->language->get('text_payment_denied') . " | " . $statusRespunseObj->data->error->message . "\n";
+                $this->model_checkout_order->addHistory($this->getRealOrderID($orderID), self::OC_ORDER_STATUS_DENIED, $comment);  
                 break;
         } 
     }

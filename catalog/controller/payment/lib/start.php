@@ -21,7 +21,7 @@ class Start extends \Opencart\System\Engine\Controller {
          * Old LIVE URL    : https://secure.mobilpay.ro/pay/payment/card/start
          * Old sandbox URL : https://secure.sandbox.netopia-payments.com/payment/card/start
          * New Sandbox URL : https://secure-sandbox.netopia-payments.com/payment/card/start
-         * https://secure.mobilpay.ro/pay/payment/card/start
+         * NEW OK  : https://secure.netopia-payments.com/api/payment/card/start
          */ 
 
         protected function sendRequest($jsonStr) {
@@ -30,9 +30,9 @@ class Start extends \Opencart\System\Engine\Controller {
                 exit;
             }
 
-            $url = $this->isLive ? 'https://secure.netopia-payments.com/payment/card/start' : 'https://secure-sandbox.netopia-payments.com/payment/card/start';
+            $url = $this->isLive ? 'https://secure.netopia-payments.com/api/payment/card/start' : 'https://secure-sandbox.netopia-payments.com/payment/card/start';
             $ch = curl_init($url);
-            
+
             $headers  = [
                 'Authorization: '.$this->apiKey,
                 'Content-Type: application/json'

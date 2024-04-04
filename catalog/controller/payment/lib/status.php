@@ -39,12 +39,14 @@ class Status extends Start{
 
         /**
          * Send request to get payment status
-         * Old LIVE URL    : https://secure.mobilpay.ro/pay/payment/card/start
+         * Old LIVE URL    : https://secure.mobilpay.ro/pay/operation/status
          * Old sandbox URL : https://secure.sandbox.netopia-payments.com/operation/status
          * New Sandbox URL : https://secure-sandbox.netopia-payments.com/operation/status
+         * NEW Live : https://secure.netopia-payments.com/api/operation/status
          */ 
+
         public function getStatus($jsonStr) {  
-            $url = $this->isLive ? 'https://secure.netopia-payments.com/operation/status' : 'https://secure-sandbox.netopia-payments.com/operation/status';
+            $url = $this->isLive ? 'https://secure.netopia-payments.com/api/operation/status' : 'https://secure-sandbox.netopia-payments.com/operation/status';
             $ch = curl_init($url);
         
             $payload = $jsonStr; // json DATA
